@@ -18,7 +18,7 @@ public class GreenText extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onChat(AsyncChatEvent event) {
-        if (!event.getPlayer().hasPermission("greentext.use")) return;
+        if (event.isCancelled() || !event.getPlayer().hasPermission("greentext.use")) return;
 
         String plainMessage = PlainTextComponentSerializer.plainText().serialize(event.message());
         char prefix = plainMessage.charAt(0);
